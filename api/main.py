@@ -5,13 +5,14 @@ import logging
 
 load_dotenv()
 
-# TODO: Setup basic console logging
-# Hint: Use logging.basicConfig() with level=logging.INFO
-# Steps:
-# 1. Configure logging with basicConfig()
-# 2. Set level to logging.INFO
-# 3. Add console handler
-# 4. Test by adding a log message when the app starts
+# Setup basic console logging
+# Use logging.basicConfig() with level=logging.INFO
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+console_handler = logging.StreamHandler()
+logger.addHandler(console_handler)
+logger.info("Starting LearningSteps API application")
 
 app = FastAPI(title="LearningSteps API", description="A simple learning journal API for tracking daily work, struggles, and intentions")
 app.include_router(journal_router)
